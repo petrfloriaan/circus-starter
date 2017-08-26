@@ -1,0 +1,61 @@
+
+
+$grid-columns: 12 !default
+$max-width: (80em) !default
+
+$min_width_font: 400
+$max_width_font: 1000
+
+$min_font: 12
+$max_font: 14
+
+
+
+body
+  font-size: #{$min_font}px
+
+@media (min-width: #{$min_width_font}px) and (max-width: #{$max_width_font}px)
+  body
+    font-size: calc(#{$min_font}px + (#{$max_font} - #{$min_font}) * ( (100vw - #{$min_width_font}px) / ( #{$max_width_font} - #{$min_width_font}) ))
+
+@media (min-width: #{$max_width_font}px)
+  body
+    font-size: #{$max_font}px
+
+
+
+[class*=grid]
+  max-width: 80em
+  margin: 0 auto
+
+
+@mixin xs
+  @media only screen and (max-width: 35.5em)
+    @content
+
+@mixin sm
+  @media only screen and (max-width: 48em)
+    @content
+
+@mixin md
+  @media only screen and (max-width: 64em)
+    @content
+
+@mixin lg
+  @media only screen and (max-width: 80em)
+    @content
+
+
+body:before
+  content: ""
+  display: inline-block
+  height: 100%
+  left: 0
+  margin: 0 auto
+  max-width: 68em
+  opacity: 0.4
+  pointer-events: none
+  position: fixed
+  right: 0
+  width: 100%
+  z-index: -1
